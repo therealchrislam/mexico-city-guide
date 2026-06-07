@@ -1,0 +1,1062 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mexico City — Master Guide</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #ffffff;
+    --bg-secondary: #f5f4f0;
+    --bg-tertiary: #eeede8;
+    --text-primary: #1a1a18;
+    --text-secondary: #5f5e5a;
+    --text-tertiary: #888780;
+    --border: rgba(26,26,24,0.12);
+    --border-md: rgba(26,26,24,0.22);
+    --border-strong: rgba(26,26,24,0.35);
+    --radius-md: 8px;
+    --radius-lg: 12px;
+    --radius-xl: 16px;
+
+    --danger-bg: #FCEBEB;
+    --danger-text: #A32D2D;
+    --info-bg: #E6F1FB;
+    --info-text: #185FA5;
+    --success-bg: #EAF3DE;
+    --success-text: #3B6D11;
+    --warning-bg: #FAEEDA;
+    --warning-text: #854F0B;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #1e1e1c;
+      --bg-secondary: #2a2a28;
+      --bg-tertiary: #252523;
+      --text-primary: #f0efe8;
+      --text-secondary: #b4b2a9;
+      --text-tertiary: #888780;
+      --border: rgba(240,239,232,0.10);
+      --border-md: rgba(240,239,232,0.20);
+      --border-strong: rgba(240,239,232,0.32);
+
+      --danger-bg: #501313;
+      --danger-text: #F09595;
+      --info-bg: #042C53;
+      --info-text: #85B7EB;
+      --success-bg: #173404;
+      --success-text: #97C459;
+      --warning-bg: #412402;
+      --warning-text: #EF9F27;
+    }
+  }
+
+  html { background: var(--bg-tertiary); }
+
+  body {
+    font-family: 'DM Sans', system-ui, sans-serif;
+    font-size: 15px;
+    color: var(--text-primary);
+    background: var(--bg-tertiary);
+    min-height: 100vh;
+    padding: 2rem 1rem 4rem;
+  }
+
+  .wrap {
+    max-width: 780px;
+    margin: 0 auto;
+    background: var(--bg);
+    border-radius: var(--radius-xl);
+    border: 0.5px solid var(--border);
+    padding: 2rem 2rem 3rem;
+  }
+
+  .hdr { margin-bottom: 1.75rem; }
+  .hdr h1 {
+    font-family: 'DM Sans', system-ui, sans-serif;
+    font-size: 28px;
+    font-weight: 400;
+    color: var(--text-primary);
+    letter-spacing: -0.3px;
+    margin-bottom: 6px;
+  }
+  .hdr p { font-size: 13px; color: var(--text-secondary); }
+
+  .tabs {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    margin-bottom: 1.75rem;
+    border-bottom: 0.5px solid var(--border);
+    padding-bottom: 1rem;
+  }
+  .tab {
+    padding: 6px 14px;
+    border-radius: 20px;
+    border: 0.5px solid var(--border-md);
+    background: transparent;
+    font-size: 13px;
+    font-family: 'DM Sans', sans-serif;
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: all 0.12s;
+  }
+  .tab:hover { background: var(--bg-secondary); }
+  .tab.active {
+    background: var(--bg-secondary);
+    border-color: var(--border-strong);
+    color: var(--text-primary);
+    font-weight: 500;
+  }
+
+  .sec { display: none; }
+  .sec.on { display: block; }
+
+  .sl {
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--text-tertiary);
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    margin: 1.5rem 0 0.75rem;
+  }
+
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 10px;
+  }
+
+  .card {
+    background: var(--bg);
+    border: 0.5px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 13px 15px;
+    transition: border-color 0.15s;
+  }
+  .card:hover { border-color: var(--border-md); }
+
+  .ct { display: flex; align-items: flex-start; justify-content: space-between; gap: 8px; margin-bottom: 5px; }
+  .cn { font-size: 15px; font-weight: 500; color: var(--text-primary); }
+  .bx { display: flex; gap: 4px; flex-wrap: wrap; flex-shrink: 0; }
+
+  .b { font-size: 11px; padding: 2px 7px; border-radius: 10px; white-space: nowrap; }
+  .bm { background: var(--danger-bg); color: var(--danger-text); }
+  .bi { background: var(--info-bg); color: var(--info-text); }
+  .bs { background: var(--success-bg); color: var(--success-text); }
+  .bw { background: var(--warning-bg); color: var(--warning-text); }
+
+  .cd { font-size: 13px; color: var(--text-secondary); line-height: 1.55; }
+  .cn2 {
+    font-size: 12px;
+    color: var(--text-tertiary);
+    margin-top: 6px;
+    border-top: 0.5px solid var(--border);
+    padding-top: 6px;
+  }
+  .nb {
+    display: inline-block;
+    font-size: 11px;
+    padding: 2px 7px;
+    border-radius: 10px;
+    background: var(--bg-secondary);
+    color: var(--text-secondary);
+    margin-top: 5px;
+  }
+  .nils { font-size: 12px; color: var(--text-tertiary); font-style: italic; margin-top: 5px; }
+
+  .tip-box {
+    background: var(--bg-secondary);
+    border-radius: var(--radius-lg);
+    padding: 14px 16px;
+    margin-bottom: 10px;
+  }
+  .tip-box h3 { font-size: 14px; font-weight: 500; color: var(--text-primary); margin-bottom: 6px; }
+  .tip-box p { font-size: 13px; color: var(--text-secondary); line-height: 1.6; }
+
+
+  .cn2 a {
+    color: var(--text-tertiary);
+    text-decoration: none;
+    border-bottom: 0.5px solid var(--border-md);
+    transition: color 0.15s, border-color 0.15s;
+  }
+  .cn2 a:hover {
+    color: var(--text-primary);
+    border-bottom-color: var(--border-strong);
+  }
+
+  @media (max-width: 600px) {
+    .wrap { padding: 1.25rem 1.25rem 2rem; border-radius: var(--radius-lg); }
+    .hdr h1 { font-size: 22px; }
+    .cards { grid-template-columns: 1fr; }
+  }
+
+  /* ── Floating map button ── */
+  .map-fab {
+    position: fixed;
+    bottom: 28px;
+    right: 28px;
+    z-index: 900;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--text-primary);
+    color: var(--bg);
+    border: none;
+    border-radius: 24px;
+    padding: 11px 18px 11px 14px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.22);
+    transition: transform 0.15s, box-shadow 0.15s;
+  }
+  .map-fab:hover { transform: translateY(-2px); box-shadow: 0 6px 24px rgba(0,0,0,0.28); }
+  .map-fab svg { flex-shrink: 0; }
+
+  /* ── Overlay ── */
+  .map-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    background: var(--bg);
+    flex-direction: column;
+  }
+  .map-overlay.open { display: flex; }
+
+  .map-topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 20px;
+    border-bottom: 0.5px solid var(--border);
+    flex-shrink: 0;
+    background: var(--bg);
+    z-index: 2;
+  }
+  .map-topbar h2 {
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--text-primary);
+    letter-spacing: -0.2px;
+  }
+  .map-topbar-right { display: flex; align-items: center; gap: 10px; }
+
+  .map-close {
+    background: var(--bg-secondary);
+    border: 0.5px solid var(--border-md);
+    border-radius: 20px;
+    padding: 6px 14px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: background 0.12s;
+  }
+  .map-close:hover { background: var(--bg-tertiary); }
+
+  /* category filter pills */
+  .map-filters {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    padding: 10px 20px;
+    border-bottom: 0.5px solid var(--border);
+    flex-shrink: 0;
+    background: var(--bg);
+  }
+  .mf {
+    padding: 4px 12px;
+    border-radius: 20px;
+    border: 0.5px solid var(--border-md);
+    background: transparent;
+    font-size: 12px;
+    font-family: 'DM Sans', sans-serif;
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: all 0.12s;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  .mf .dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
+  .mf.active { border-color: var(--border-strong); color: var(--text-primary); background: var(--bg-secondary); font-weight: 500; }
+
+  #map-container { flex: 1; position: relative; }
+  #leaflet-map { width: 100%; height: 100%; }
+
+  /* Leaflet popup custom style */
+  .lf-popup .leaflet-popup-content-wrapper {
+    border-radius: 10px !important;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.15) !important;
+    padding: 0 !important;
+    font-family: 'DM Sans', sans-serif !important;
+    border: 0.5px solid rgba(0,0,0,0.1) !important;
+  }
+  .lf-popup .leaflet-popup-content { margin: 0 !important; width: auto !important; min-width: 180px; }
+  .lf-popup .leaflet-popup-tip-container { display: none; }
+  .lf-popup-inner { padding: 12px 14px; }
+  .lf-popup-name { font-size: 14px; font-weight: 500; color: #1a1a18; margin-bottom: 3px; }
+  .lf-popup-cat { font-size: 11px; color: #888780; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px; }
+  .lf-popup-desc { font-size: 12px; color: #5f5e5a; line-height: 1.5; margin-bottom: 8px; }
+  .lf-popup-link { font-size: 12px; color: #185FA5; text-decoration: none; border-bottom: 0.5px solid rgba(24,95,165,0.3); }
+  .lf-popup-link:hover { border-bottom-color: #185FA5; }
+
+</style>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" />
+</head>
+<body>
+<div class="wrap">
+  <div class="hdr">
+    <h1>Mexico City — The Master List</h1>
+  </div>
+
+  <div class="tabs">
+    <button class="tab active" onclick="show('work',this)">Work</button>
+    <button class="tab" onclick="show('tacos',this)">Tacos</button>
+    <button class="tab" onclick="show('seafood',this)">Seafood</button>
+    <button class="tab" onclick="show('rest',this)">Restaurants</button>
+    <button class="tab" onclick="show('bfast',this)">Breakfast</button>
+    <button class="tab" onclick="show('drink',this)">Bars</button>
+    <button class="tab" onclick="show('sights',this)">Sights</button>
+    <button class="tab" onclick="show('shop',this)">Shop</button>
+    <button class="tab" onclick="show('tips',this)">Tips</button>
+  </div>
+
+  <!-- WORK -->
+  <div id="work" class="sec on">
+    <p class="sl">Shoot location</p>
+    <div class="cards">
+      <div class="card">
+        <div class="ct"><span class="cn">The Lift CDMX</span><div class="bx"><span class="b bi">studio</span></div></div>
+        <p class="cd">Production studio and creative space.</p>
+        <p class="cn2"><a href="https://www.google.com/maps/place/?q=place_id:ChIJAdjUtRv_0YUR5L-WoQRPDKo" target="_blank" rel="noopener">Sinaloa 215, Roma Norte</a></p>
+      </div>
+    </div>
+    <p class="sl">Hotel</p>
+    <div class="cards">
+      <div class="card">
+        <div class="ct"><span class="cn">Four Seasons Mexico City</span><div class="bx"><span class="b bs">home base</span></div></div>
+        <p class="cd">On Paseo de la Reforma. Hacienda-style courtyard, steps from Chapultepec. Fifty Mills bar on-site for late nights.</p>
+        <p class="cn2"><a href="https://maps.google.com/?cid=6971479112545467983" target="_blank" rel="noopener">Av. Paseo de la Reforma 500, Juárez</a></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- TACOS -->
+  <div id="tacos" class="sec">
+    <p class="sl">Must-hit stands</p>
+    <div class="cards">
+      <div class="card">
+        <div class="ct"><span class="cn">El Vilsito</span><div class="bx"><span class="b bm">must-go</span></div></div>
+        <p class="cd">Auto body shop by day, legendary al pastor from the afternoon. Best al pastor in DF.</p>
+        <span class="nb">late night</span>
+      </div>
+      <div class="card">
+        <div class="ct"><span class="cn">Los Cocuyos</span><div class="bx"><span class="b bm">must-go</span></div></div>
+        <p class="cd">Amazing suadero, campechano, trippa. Try the weird cuts.</p>
+        <p class="cn2"><a href="https://maps.google.com/?cid=14051425661561475567" target="_blank" rel="noopener">Bolivar 54, Centro</a></p>
+      </div>
+      <div class="card">
+        <div class="ct"><span class="cn">El Charquito</span><div class="bx"><span class="b bi">Nils's local fave</span></div></div>
+        <p class="cd">Great tortillas and condiments. Campechano (half chorizo, half beef) con queso.</p>
+        <p class="cn2"><a href="https://www.google.com/maps/search/El+Charquito+tacos+Puebla+Salamanca+Roma+Mexico+City" target="_blank" rel="noopener">Puebla just W of Salamanca, Roma</a></p>
+      </div>
+      <div class="card">
+        <div class="ct"><span class="cn">El Farolito</span><div class="bx"><span class="b bi">classic</span></div></div>
+        <p class="cd">Pioneered tacos al carbón. Get the bistec and chicharron de queso mexicana.</p>
+        <p class="cn2"><a href="https://www.google.com/maps/search/El+Farolito+tacos+Altata+Alfonso+Reyes+Condesa+Mexico+City" target="_blank" rel="noopener">Altata & Alfonso Reyes, Condesa</a></p>
+      </div>
+      <div class="card">
+        <div class="ct"><span class="cn">Califa</span><div class="bx"><span class="b bi">across from Farolito</span></div></div>
+        <p class="cd">Ribeye and gaonera, con queso. Original Condesa location is best.</p>
+        <p class="cn2"><a href="https://www.google.com/maps/search/El+Farolito+tacos+Altata+Alfonso+Reyes+Condesa+Mexico+City" target="_blank" rel="noopener">Altata & Alfonso Reyes, Condesa</a></p>
+      </div>
+      <div class="card">
+        <div class="ct"><span class="cn">Taqueria Orinoco</span><div class="bx"><span class="b bm">must-go</span></div></div>
+        <p class="cd">A must if you've never had it.</p>
+      </div>
+      <div class="card">
+        <div class="ct"><span class="cn">El Borrego Viudo</span><div class="bx"><span class="b bi">24 hrs</span></div></div>
+        <p class="cd">Open 24 hours. Get the pastor. All about the salsa negra. They serve in cars.</p>
+        <p class="cn2"><a href="https://www.google.com/maps/search/El+Borrego+Viudo+Revolución+241+Tacubaya+Mexico+City" target="_blank" rel="noopener">Revolución 241, Tacubaya</a></p>
+      </div>
+      <div class="card">
+        <div class="ct"><span class="cn">Los Panchos</span><div class="bx"><span class="b bi">best carnitas</span></div></div>
+        <p class="cd">Best and biggest carnitas tacos. Get the surtida (mixed). Outside taquero is the move. Open 9a-10p every day including Sunday.</p>
+        <p class="cn2"><a href="https://www.google.com/maps/search/Los+Panchos+carnitas+Tolstoi+9+Anzures+Mexico+City" target="_blank" rel="noopener">Tolstoi 9, Anzures (near Polanco)</a></p>
+      </div>
+      <div class="card">
+        <div class="ct"><span class="cn">El Huequito</span><div class="bx"><span class="b bi">since 1959</span></div></div>
+        <p class="cd">Perfect tacos al pastor from a tiny stand since 1959. Great when visiting Mercado San Juan.</p>
+        <p class="cn2"><a href="https://www.google.com/maps/search/El+Huequito+tacos+Ayuntamiento+21+Centro+Mexico+City" target="_blank" rel="noopener">Ayuntamiento 21, Centro</a></p>
+      </div>
+      <div class="card">
+        <div class="ct"><span class="cn">El Chupacabras</span><div class="bx"><span class="b bi">24hrs weekends</span></div></div>
+        <p class="cd">Famous for "chupas" — chorizo, bistec, and cecina mix. Great condiment bar.</p>
+        <p class="cn2"><a href="https://www.google.com/maps/search/El+Chupacabras+tacos+Churubusco+Coyoacan+metro+Mexico+City" target="_blank" rel="noopener">Under bridge, Churubusco at Coyoacán metro</a></p>
+      </div>
+      <div class="card">
+        <div class="ct"><span class="cn">El Turix</span><div class="bx"><span class="b bi">cochinita only</span></div></div>
+        <p class="cd">Only cochinita pibil — tacos, tortas, panuchos, tostadas. Amazing panuchos, habanero salsa one of the best.</p>
+        <p class="cn2"><a href="https://www.google.com/maps/search/El+Turix+cochinita+Emilio+Castelar+212+Polanco+Mexico+City" target="_blank" rel="noopener">Emilio Castelar 212, Polanco</a></p>
+      </div>
+      <div class="card">
+        <div class="ct"><span class="cn">El Greco</span></div>
+        <p class="cd">Souvlaki-style rotisserie (get the "doneraki"), beans El Greco, and flan.</p>
+        <p class="cn2"><a href="https://www.google.com/maps/search/El+Greco+tacos+Michoacán+54+Hipódromo+Mexico+City" target="_blank" rel="noopener">Ave. Michoacán 54, Hipódromo</a></p>
+      </div>
+      <div class="card">
+        <div class="ct"><span class="cn">Tacos Beto</span><div class="bx"><span class="b bw">scary-good</span></div></div>
+        <p class="cd">"Cochinada" taco: dregs of the frying pot — chicharron, chorizo, meat bits, pork fat. Greasy, slightly scary, incredibly tasty.</p>
+        <p class="cn2"><a href="https://www.google.com/maps/search/Tacos+Beto+Vertiz+1023+Narvarte+Mexico+City" target="_blank" rel="noopener">Vertiz 1023, Narvarte. M-Th 5p-4a, Fr-Sa 7p-7a</a></p>
+      </div>
+    </div>
+    <p class="sl">Street stands</p>
+    <div class="cards">
+      <div class="card">
+        <div class="ct"><span class="cn">Blue corn & barbacoa stands</span></div>
+        <p class="cd">Corner cluster across from Parque España in Condesa. Blue corn lady does squash blossoms, spinach with fresh cheese, chicken tinga.</p>
+        <span class="nb">Saturday mornings</span>
+      </div>
+      <div class="card">
+        <div class="ct"><span class="cn">Gorditas outside Metro Sevilla</span></div>
+        <p class="cd">South side of Av. Chapultepec — great street food cluster near Roma/Condesa.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SEAFOOD -->
+  <div id="seafood" class="sec">
+    <div class="cards">
+      <div class="card">
+        <div class="ct"><span class="cn">Contramar</span><div class="bx"><span class="b bm">must-go</span></div></div>
+        <p class="cd">Gaby Camara's perfect restaurant. Get tostadas de atún, jaibas suaves, and the whole Pescado Contramar if splurging.</p>
+        <p class="cn2"><a href="https://maps.google.com/?cid=1047725080642144831" target="_blank" rel="noopener">Durango 200, Roma Norte</a></p>
+      </div>
+      <div class="card">
+        <div class="ct"><span class="cn">Romulo's</span><div class="bx"><span class="b bi">Nils's top pick</span></div></div>
+        <p class="cd">Even better than Mi Gusto Es. Better aguachile, plus almejas vivas, pata de mula, whole fish, abalone. Market-turned-restaurant since 1972.</p>
+        <p class="cn2"><a href="https://www.google.com/maps/search/Romulos+mariscos+Yacatas+Narvarte+Mexico+City" target="_blank" rel="noopener">Yacatas btwn Uxmal & Morena, Narvarte</a></p>
+      </div>
+      <div class="card">
+        <div class="ct"><span class="cn">Mi Gusto Es</span><div class="bx"><span class="b bm">go before 12:30</span></div></div>
+        <p class="cd">Sinaloan-style. Get the aguachile, tacos de marlin ahumado. Go before 12:30 on weekends — seriously.</p>
+        <p class="cn2"><a href="https://www.google.com/maps/search/Mi+Gusto+Es+mariscos+Diagonal+San+Antonio+1709+Narvarte+Mexico+City" target="_blank" rel="noopener">Diagonal San Antonio 1709, Narvarte</a></p>
+      </div>
+      <div class="card">
+        <div class="ct"><span class="cn">Entremar</span><div class="bx"><span class="b bi">Contramar fallback</span></div></div>
+        <p class="cd">Sister restaurant to Contramar. Go here if you can't get a reservation.</p>
+        <p class="cn2"><a href="https://www.google.com/maps/search/Entremar+restaurant+Hegel+Horacio+Polanco+Mexico+City" target="_blank" rel="noopener">Hegel @ Horacio, Polanco</a></p>
+      </div>
+      <div class="card">
+        <div class="ct"><span class="cn">Fugaz</span></div>
+        <p class="cd">Cevicheria from a Colombian chef. Get the tostada and crudo.</p>
+      </div>
+      <div class="card">
+        <div class="ct"><span class="cn">Mi Compa Chava</span><div class="bx"><span class="b bm">must-go</span></div></div>
+        <p class="cd">An absolute must — beloved seafood spot.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- RESTAURANTS -->
+  <div id="rest" class="sec">
+    <p class="sl">Serious restaurants</p>
+    <div class="cards">
+      <div class="card">
+        <div class="ct"><span class="cn">Pujol</span><div class="bx"><span class="b bi">for food people</span></div></div>
+        <p class="cd">One of the city's best. Chef Enrique Olvera. Inventive and trad-minded. Nils caveat: "undeniably great but often more academic than luscious."</p>
+        <p class="cn2"><a href="https://www.google.com/maps/search/Pujol+restaurant+Petrarca+254+Polanco+Mexico+City" target="_blank" rel="noopener">Petrarca 254, Polanco</a></p>
+      </div>
+      <div class="card">
+        <div class="ct"><span class="cn">Quintonil</span><div class="bx"><span class="b bi">ex-Pujol chef</span></div></div>
+        <p class="cd">Everything local, lower-key than Pujol. Salads and apps better than entrees. Great cheese plate.</p>
+        <p class="cn2"><a href="https://www.google.com/maps/search/Quintonil+restaurant+Newton+55+Polanco+Mexico+City" target="_blank" rel="noopener">Newton 55, Polanco. M-Sa 1-5 & 7-11</a></p>
+      </div>
+      <div class="card">
+        <div class="ct"><span class="cn">Rosetta</span><div class="bx"><span class="b bm">must-go</span></div></div>
+        <p class="cd">Genuinely great (not just "for Mexico"). Stunning old mansion. Also a bakery from 9am, all breads baked in-house.</p>
+        <p class="cn2"><a href="https://maps.google.com/?cid=7025595317954862016" target="_blank" rel="noopener">Colima 166, Roma Norte. M-Sa 2p-11p</a></p>
+      </div>
+      <div class="card">
+        <div class="ct"><span class="cn">Maximo Bistrot</span><div class="bx"><span class="b bi">highly rec.</span></div></div>
+        <p class="cd">Market-based daily menus. Very popular. Not cheap, some attitude.</p>
+        <p class="cn2"><a href="https://www.google.com/maps/search/Maximo+Bistrot+Tonalá+133+Roma+Mexico+City" target="_blank" rel="noopener">Tonalá 133, Roma. Tu-Sa 1-11, Sun 11-7</a></p>
+      </div>
+      <div class="card">
+        <div class="ct"><span class="cn">Nicos</span><div class="bx"><span class="b bi">Nils's top fave</span></div></div>
+        <p class="cd">Nils calls it one of his fave restaurants in the whole city. Heirloom ingredients, small producers, soulful home cooking. Lunch only.</p>
+        <p class="cn2"><a href="https://www.google.com/maps/search/Nicos+restaurant+Cuitlahuac+3102+Azcapotzalco+Mexico+City" target="_blank" rel="noopener">Cuitlahuac 3102, Azcapotzalco</a></p>
+      </div>
+      <div class="card">
+        <div class="ct"><span class="cn">Coox Hanal</span><div class="bx"><span class="b bm">must-go</span></div></div>
+        <p class="cd">Best Yucatan restaurant in DF. Lunch only, cheap, busy. Sopa de lima. Weekends: amazing trio plays in the afternoon.</p>
+        <p class="cn2"><a href="https://www.google.com/maps/search/Coox+Hanal+Isabel+la+Católica+83+Centro+Mexico+City" target="_blank" rel="noopener">Isabel la Católica 83, 2nd fl, Centro</a></p>
+      </div>
+      <div class="card">
+        <div class="ct"><span class="cn">Merotoro</span><div class="bx"><span class="b bi">Baja/Med</span></div></div>
+        <p class="cd">Baja California food with Italian/Med influences. Can be phenomenal, esp risottos and seafood apps.</p>
+        <p class="cn2"><a href="https://www.google.com/maps/search/Merotoro+restaurant+Amsterdam+204+Condesa+Mexico+City" target="_blank" rel="noopener">Amsterdam 204, Condesa</a></p>
+      </div>
+      <div class="card">
+        <div class="ct"><span class="cn">Hugo</span></div>
+        <p class="cd">Wine bar/bistro from chef Mikey Crespo. Don't miss the tartare and radicchio salad.</p>
+      </div>
+      <div class="card">
+        <div class="ct"><span class="cn">Meroma</span></div>
+        <p class="cd">Sit at the bar downstairs. Get the crudo, tartare, shrimp toast, and martinis.</p>
+      </div>
+      <div class="card">
+        <div class="ct"><span class="cn">Paris 16</span></div>
+        <p class="cd">Favorite bistro in a Mario Pani building on Reforma. Best milanesa in DF.</p>
+      </div>
+      <div class="card">
+        <div class="ct"><span class="cn">Cicatriz</span><div class="bx"><span class="b bm">must-go</span></div></div>
+        <p class="cd">All-day cafe: sandwiches, salads, cocktails, coffee, natural wine. Better for big lunch — nighttime menu is limited.</p>
+      </div>
+      <div class="card">
+        <div class="ct"><span class="cn">Masala y Maiz</span></div>
+        <p class="cd">Indian-Mexican-Kenyan fusion. Celebrated.</p>
+      </div>
+      <div class="card">
+        <div class="ct"><span class="cn">Fonda Margarita</span><div class="bx"><span class="b bi">go at dawn</span></div></div>
+        <p class="cd">Go very early (opens 5:30am!) after a night out. Chicharron in salsa verde and frijoles con huevos.</p>
+        <p class="cn2"><a href="https://www.google.com/maps/search/Fonda+Margarita+Adolfo+Prieto+1364+Del+Valle+Mexico+City" target="_blank" rel="noopener">Adolfo Prieto 1364, Del Valle. M-Sa 5:30-11:30a</a></p>
+      </div>
+      <div class="card">
+        <div class="ct"><span class="cn">La Tonina</span></div>
+        <p class="cd">Amazing norteño restaurant. Best flour tortillas. The chilorio is a must.</p>
+      </div>
+    </div>
+    <p class="sl">Skip these (despite the hype)</p>
+    <div class="cards">
+      <div class="card">
+        <div class="ct"><span class="cn">Biko / Hacienda de los Morales / Izote</span><div class="bx"><span class="b bw">overhyped</span></div></div>
+        <p class="cd">Nils finds Biko overworked and forced, Hacienda de los Morales overpriced and dull, Izote inconsistent. Go to Pujol if you want fancy and important.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- BREAKFAST -->
+  <div id="bfast" class="sec">
+    <div class="cards">
+      <div class="card">
+        <div class="ct"><span class="cn">El Cardenal</span><div class="bx"><span class="b bm">must-go</span></div></div>
+        <p class="cd">Best for breakfast in the city. Chocolate con leche, fresh conchas, nata. Centro location near the Zócalo is best. Open 8a daily.</p>
+        <p class="cn2"><a href="https://maps.google.com/?cid=13868502935468731733" target="_blank" rel="noopener">Palma 23, Centro</a></p>
+      </div>
+      <div class="card">
+        <div class="ct"><span class="cn">Panaderia Rosetta</span><div class="bx"><span class="b bm">must-go</span></div></div>
+        <p class="cd">Bakery attached to restaurant Rosetta. All breads baked in-house. A city institution for morning pastries.</p>
+      </div>
+      <div class="card">
+        <div class="ct"><span class="cn">El Moro</span><div class="bx"><span class="b bi">24 hrs</span></div></div>
+        <p class="cd">Iconic churros and hot chocolate — get the "especial" (least sweet). Great scene, elderly aproned waitresses. Open 24 hours.</p>
+        <p class="cn2"><a href="https://www.google.com/maps/search/El+Moro+churros+Eje+Central+Lázaro+Cárdenas+42+Centro+Mexico+City" target="_blank" rel="noopener">Eje Central Lázaro Cárdenas 42, Centro</a></p>
+      </div>
+      <div class="card">
+        <div class="ct"><span class="cn">Chiquitito Café</span><div class="bx"><span class="b bi">best coffee</span></div></div>
+        <p class="cd">Maybe the best coffee bar in the city. World-class, carefully sourced, ground to order.</p>
+        <p class="cn2"><a href="https://www.google.com/maps/search/Chiquitito+Café+Alfonso+Reyes+232+Condesa+Mexico+City" target="_blank" rel="noopener">Alfonso Reyes 232, Condesa</a></p>
+      </div>
+      <div class="card">
+        <div class="ct"><span class="cn">Klein's</span><div class="bx"><span class="b bi">breakfast til 1pm</span></div></div>
+        <p class="cd">Cross between a great Mex breakfast place and Jewish deli. Sopes with salami, cream cheese, bacon, manchego. Rare to find breakfast served till 1pm.</p>
+        <p class="cn2"><a href="https://www.google.com/maps/search/Kleins+restaurant+Masaryk+360+Polanco+Mexico+City" target="_blank" rel="noopener">Masaryk 360, Polanco. M-Su 7a-1p</a></p>
+      </div>
+      <div class="card">
+        <div class="ct"><span class="cn">Maque</span></div>
+        <p class="cd">Great Mex breakfasts and amazing pastries with park view. Good to grab and stroll Parque Mexico.</p>
+        <p class="cn2"><a href="https://www.google.com/maps/search/Maque+cafe+Ozulama+4+Parque+Mexico+Condesa+Mexico+City" target="_blank" rel="noopener">Ozulama 4, Parque Mexico, Condesa. Open 8a-10p</a></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- BARS -->
+  <div id="drink" class="sec">
+    <p class="sl">Mezcal</p>
+    <div class="cards">
+      <div class="card">
+        <div class="ct"><span class="cn">El Bósforo</span><div class="bx"><span class="b bi">Nils's #1</span></div></div>
+        <p class="cd">Nils's favorite bar in the city. Hidden in Centro. Tons of rare Mexican booze, prehispanic-inspired snacks. Knock if the door's closed.</p>
+        <p class="cn2"><a href="https://maps.google.com/?cid=12762817087927172120" target="_blank" rel="noopener">Luis Moya 31, Centro. Tu-Sa from 4p</a></p>
+      </div>
+      <div class="card">
+        <div class="ct"><span class="cn">La Clandestina</span><div class="bx"><span class="b bi">mezcal education</span></div></div>
+        <p class="cd">20+ backyard mezcals in water jugs. Bartenders will taste you through several to find one you like. Unmarked door.</p>
+        <p class="cn2"><a href="https://www.google.com/maps/search/La+Clandestina+mezcal+Álvaro+Obregon+298+Roma+Mexico+City" target="_blank" rel="noopener">Álvaro Obregon 298, Roma/Condesa border</a></p>
+      </div>
+      <div class="card">
+        <div class="ct"><span class="cn">Novo's</span><div class="bx"><span class="b bi">Coyoacán fave</span></div></div>
+        <p class="cd">All hard-to-find Mexican liquors — pulque, pasita, sotol, bacanora, toritos, mezcals.</p>
+        <p class="cn2"><a href="https://www.google.com/maps/search/Novos+bar+Madrid+13+Coyoacán+Mexico+City" target="_blank" rel="noopener">Madrid 13, Coyoacán. M-Sa 1:30p-2a</a></p>
+      </div>
+    </div>
+    <p class="sl">Cocktail bars</p>
+    <div class="cards">
+      <div class="card">
+        <div class="ct"><span class="cn">Handshake Speakeasy</span><div class="bx"><span class="b bm">reserve ahead</span></div></div>
+        <p class="cd">One of the best cocktail bars in the world. Reserve well in advance or you'll wait forever.</p>
+      </div>
+      <div class="card">
+        <div class="ct"><span class="cn">686 Bar</span></div>
+        <p class="cd">From Lucho Martinez. Go late, sit at the bar. Martinis or the carrot sour.</p>
+      </div>
+      <div class="card">
+        <div class="ct"><span class="cn">Bar Tamaulipas</span></div>
+        <p class="cd">Cafe by day, chill cocktail bar W-Sa til 3:30am. Creative bar snacks, low indie music.</p>
+        <p class="cn2"><a href="https://www.google.com/maps/search/Bar+Tamaulipas+147+Condesa+Mexico+City" target="_blank" rel="noopener">Tamaulipas 147, Condesa</a></p>
+      </div>
+      <div class="card">
+        <div class="ct"><span class="cn">Limantour</span></div>
+        <p class="cd">Closest the city has to a real mixology bar. Huge cocktail list. Open 4p-2a daily.</p>
+        <p class="cn2"><a href="https://www.google.com/maps/search/Limantour+bar+Alvaro+Obregon+106+Roma+Mexico+City" target="_blank" rel="noopener">Alvaro Obregon 106, Roma</a></p>
+      </div>
+      <div class="card">
+        <div class="ct"><span class="cn">Tlecan Bar</span></div>
+        <p class="cd">On the list.</p>
+      </div>
+    </div>
+    <p class="sl">Classic cantinas</p>
+    <div class="cards">
+      <div class="card">
+        <div class="ct"><span class="cn">El Mirador</span><div class="bx"><span class="b bi">since 1904</span></div></div>
+        <p class="cd">Cantina since 1904. Get the tribilin and chamorro. Ask to sit in the cantina side.</p>
+        <p class="cn2"><a href="https://www.google.com/maps/search/El+Mirador+cantina+Chapultepec+606+San+Miguel+Mexico+City" target="_blank" rel="noopener">Av Chapultepec 606, San Miguel Chapultepec</a></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SIGHTS -->
+  <div id="sights" class="sec">
+    <p class="sl">Barragán architecture</p>
+    <div class="cards">
+      <div class="card">
+        <div class="ct"><span class="cn">Casa Luis Barragán</span><div class="bx"><span class="b bs">book ahead</span></div></div>
+        <p class="cd">One of the great architectural experiences in the world. Tours M-F 10a-2p & 4-6p, Sat 10a-1p. Appointments strongly suggested.</p>
+        <p class="cn2"><a href="https://maps.google.com/?cid=6511729919028197971" target="_blank" rel="noopener">Francisco Ramirez 14, Tacubaya</a></p>
+      </div>
+      <div class="card">
+        <div class="ct"><span class="cn">Casa Gilardi</span><div class="bx"><span class="b bs">email for tour</span></div></div>
+        <p class="cd">Barragán's last project. Must-go. Email them to arrange a visit.</p>
+      </div>
+      <div class="card">
+        <div class="ct"><span class="cn">Torres de Satélite</span></div>
+        <p class="cd">Barragán's iconic sculpture towers. Worth the trip north.</p>
+        <p class="cn2"><a href="https://www.google.com/maps/search/Torres+de+Satélite+Barragán+Naucalpan+Mexico" target="_blank" rel="noopener">Naucalpan</a></p>
+      </div>
+    </div>
+    <p class="sl">Other architecture</p>
+    <div class="cards">
+      <div class="card">
+        <div class="ct"><span class="cn">Casa Orgánica</span><div class="bx"><span class="b bs">appt. required</span></div></div>
+        <p class="cd">One of the most important buildings by Javier Senosiain. Must make an appointment.</p>
+      </div>
+      <div class="card">
+        <div class="ct"><span class="cn">Parque Quetzalcóatl</span></div>
+        <p class="cd">Senosiain's fantastical organic park — surreal and worth the trip.</p>
+      </div>
+      <div class="card">
+        <div class="ct"><span class="cn">Kurimanzutto</span></div>
+        <p class="cd">Excellent contemporary art gallery designed by Alberto Kalach.</p>
+      </div>
+    </div>
+    <p class="sl">Museums</p>
+    <div class="cards">
+      <div class="card">
+        <div class="ct"><span class="cn">Anthropology Museum</span><div class="bx"><span class="b bm">world-class</span></div></div>
+        <p class="cd">One of the best archaeological museums anywhere. Do not miss.</p>
+        <span class="nb">Chapultepec</span>
+      </div>
+      <div class="card">
+        <div class="ct"><span class="cn">Frida Kahlo Museum</span></div>
+        <p class="cd">La Casa Azul in Coyoacán. Note: doesn't house most of her artwork — Museo Dolores Olmedo is better for that.</p>
+      </div>
+      <div class="card">
+        <div class="ct"><span class="cn">Museo Soumaya</span></div>
+        <p class="cd">Free. Extraordinary collection, iconic building.</p>
+        <span class="nb">Polanco</span>
+      </div>
+      <div class="card">
+        <div class="ct"><span class="cn">San Ángel Inn</span></div>
+        <p class="cd">Stunning restored hacienda. Go for martinis and escamoles (ant larvae — expensive but genuinely delicious). Skip the food, enjoy the patio.</p>
+      </div>
+    </div>
+    <p class="sl">Day trips</p>
+    <div class="cards">
+      <div class="card">
+        <div class="ct"><span class="cn">Teotihuacán balloon</span><div class="bx"><span class="b bi">book via Viator</span></div></div>
+        <p class="cd">Sunrise hot air balloon over the pyramids. Book through Viator ahead of time.</p>
+      </div>
+      <div class="card">
+        <div class="ct"><span class="cn">Grutas de Tolantongo</span><div class="bx"><span class="b bi">book via Viator</span></div></div>
+        <p class="cd">Thermal hot springs and stunning blue river gorge. Book through Viator.</p>
+      </div>
+    </div>
+    <p class="sl">Markets & strolls</p>
+    <div class="cards">
+      <div class="card">
+        <div class="ct"><span class="cn">El Bazar Sábado</span><div class="bx"><span class="b bi">Saturdays only</span></div></div>
+        <p class="cd">Best quality handmade goods in San Ángel. Don't miss Museo del Carmen nearby (convent with mummies).</p>
+        <p class="cn2"><a href="https://www.google.com/maps/search/El+Bazar+Sábado+Plaza+San+Jacinto+San+Angel+Mexico+City" target="_blank" rel="noopener">Plaza San Jacinto, San Angel</a></p>
+      </div>
+      <div class="card">
+        <div class="ct"><span class="cn">Mercado San Juan</span></div>
+        <p class="cd">Incredible selection, popular with chefs. Especially good for seafood and rarer meats.</p>
+        <p class="cn2"><a href="https://www.google.com/maps/search/Mercado+San+Juan+Ernesto+Pugibet+Centro+Mexico+City" target="_blank" rel="noopener">Ernesto Pugibet, Centro</a></p>
+      </div>
+      <div class="card">
+        <div class="ct"><span class="cn">Tianguis La Lagunilla</span></div>
+        <p class="cd">Sundays — best and largest flea market. Home decor, antiques, clothes, furniture.</p>
+      </div>
+      <div class="card">
+        <div class="ct"><span class="cn">Reforma on Sundays</span></div>
+        <p class="cd">Closed to cars 7a-2p for biking, jogging, strolling. Great after breakfast before the Sunday comida.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SHOP -->
+  <div id="shop" class="sec">
+    <p class="sl">Concept stores</p>
+    <div class="cards">
+      <div class="card">
+        <div class="ct"><span class="cn">IKAL</span><div class="bx"><span class="b bi">Polanco</span></div></div>
+        <p class="cd">A curated concept store of local Mexican designers — homeware, shoes, clothing, jewelry, bags, skincare. If it's beautiful and well made, chances are IKAL carries it.</p>
+        <p class="cn2"><a href="https://www.google.com/maps/search/IKAL+concept+store+Polanco+Mexico+City" target="_blank" rel="noopener">Polanco</a></p>
+      </div>
+      <div class="card">
+        <div class="ct"><span class="cn">Xinú Perfumes</span></div>
+        <p class="cd">Exceptional Mexican perfume house. Worth a visit even just to smell everything.</p>
+      </div>
+      <div class="card">
+        <div class="ct"><span class="cn">Cardón</span></div>
+        <p class="cd">Beautifully designed Mexican goods and accessories.</p>
+      </div>
+      <div class="card">
+        <div class="ct"><span class="cn">Onora</span></div>
+        <p class="cd">Beautiful Mexican crafts and home goods.</p>
+      </div>
+    </div>
+    <p class="sl">Fashion</p>
+    <div class="cards">
+      <div class="card">
+        <div class="ct"><span class="cn">Simple by Trista</span></div>
+        <p class="cd">One of the best clothing shops in the city's booming boutique scene.</p>
+        <p class="cn2"><a href="https://www.google.com/maps/search/Simple+by+Trista+Mexico+City" target="_blank" rel="noopener">Mexico City</a></p>
+      </div>
+      <div class="card">
+        <div class="ct"><span class="cn">Carla Fernández</span></div>
+        <p class="cd">Celebrated Mexican fashion designer rooted in indigenous textile traditions.</p>
+      </div>
+      <div class="card">
+        <div class="ct"><span class="cn">Fabrica Social</span></div>
+        <p class="cd">Independent fashion brand worth seeking out in Roma-Condesa.</p>
+        <p class="cn2"><a href="https://www.google.com/maps/search/Fabrica+Social+Mexico+City" target="_blank" rel="noopener">Mexico City</a></p>
+      </div>
+      <div class="card">
+        <div class="ct"><span class="cn">Hi Bye</span></div>
+        <p class="cd">Fashion boutique.</p>
+      </div>
+      <div class="card">
+        <div class="ct"><span class="cn">Marsella 68</span></div>
+      </div>
+    </div>
+    <p class="sl">Home & design</p>
+    <div class="cards">
+      <div class="card">
+        <div class="ct"><span class="cn">Chic by Accident</span></div>
+        <p class="cd">Home and furnishings shop with a great eye for finds.</p>
+        <p class="cn2"><a href="https://www.google.com/maps/search/Chic+by+Accident+Mexico+City" target="_blank" rel="noopener">Mexico City</a></p>
+      </div>
+      <div class="card">
+        <div class="ct"><span class="cn">Esrawe</span></div>
+        <p class="cd">Design studio and shop — beautifully crafted Mexican furniture and objects.</p>
+        <p class="cn2"><a href="https://www.google.com/maps/search/Esrawe+studio+Mexico+City" target="_blank" rel="noopener">Mexico City</a></p>
+      </div>
+      <div class="card">
+        <div class="ct"><span class="cn">Trinitate</span></div>
+        <p class="cd">A gorgeous house filled with all sorts of ceramics. Worth a visit just to browse.</p>
+        <p class="cn2"><a href="https://www.google.com/maps/search/Trinitate+ceramics+Mexico+City" target="_blank" rel="noopener">Mexico City</a></p>
+      </div>
+      <div class="card">
+        <div class="ct"><span class="cn">Avec Joyería</span></div>
+        <p class="cd">Jewelry.</p>
+      </div>
+    </div>
+    <p class="sl">Specialty</p>
+    <div class="cards">
+      <div class="card">
+        <div class="ct"><span class="cn">Casa Bosques</span></div>
+        <p class="cd">The funky bookstore of your dreams. A cultural institution.</p>
+        <p class="cn2"><a href="https://www.google.com/maps/search/Casa+Bosques+bookstore+Mexico+City" target="_blank" rel="noopener">Mexico City</a></p>
+      </div>
+      <div class="card">
+        <div class="ct"><span class="cn">Vinos Chidos</span></div>
+        <p class="cd">Small wine shop that offers tastings often. A great place to discover Mexican wines if you haven't tried them.</p>
+        <p class="cn2"><a href="https://www.google.com/maps/search/Vinos+Chidos+Mexico+City" target="_blank" rel="noopener">Mexico City</a></p>
+      </div>
+      <div class="card">
+        <div class="ct"><span class="cn">La Naval</span></div>
+        <p class="cd">Best liquor store in Roma/Condesa. Meats, cheeses, cigars. Great for a gift bottle or something to bring home.</p>
+        <p class="cn2"><a href="https://www.google.com/maps/search/La+Naval+licoreria+Insurgentes+Sur+373+Roma+Mexico+City" target="_blank" rel="noopener">Insurgentes Sur 373, Roma</a></p>
+      </div>
+      <div class="card">
+        <div class="ct"><span class="cn">Delirio</span></div>
+        <p class="cd">Gourmet shop/deli from chef Monica Patiño. Almost all Mexican products. Also good for a sandwich or salad.</p>
+        <p class="cn2"><a href="https://www.google.com/maps/search/Delirio+gourmet+Alvaro+Obregon+Monterrey+Roma+Mexico+City" target="_blank" rel="noopener">Alvaro Obregon & Monterrey, Roma</a></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- TIPS -->
+  <div id="tips" class="sec">
+    <div class="tip-box">
+      <h3>La comida — the main meal</h3>
+      <p>The big meal is a late, long lunch served 1:30-5pm (usually after 2:30). Many restaurants close at 6 or 7pm. On Sunday nights it's nearly impossible to find anywhere cool open. People in restaurants at 6pm are still there from lunch — that's "sobremesa." Ask for the check; bringing it without being asked is rude.</p>
+    </div>
+    <div class="tip-box">
+      <h3>Altitude & water</h3>
+      <p>Mexico City is 7,300 feet above sea level — expect possible nausea, dehydration, headache, shortness of breath. You're more likely to get sick from tap water than food. Don't brush teeth with tap water or swallow in the shower. Raw fruits that need peeling (mangos, bananas, watermelon) are always fine.</p>
+    </div>
+    <div class="tip-box">
+      <h3>Taxis & Uber</h3>
+      <p>Uber works great and is cheap — a total game changer. Street cabs: make sure it's a white sedan with red stripe (or burgundy/gold); license plate = capital letter + 5 numbers; meter must be on. Give the colonia AND nearest cross street, not just an address.</p>
+    </div>
+    <div class="tip-box">
+      <h3>Credit cards & tipping</h3>
+      <p>When paying by card, restaurants usually add the tip before running it. When you hand over your card, say "con quince" (15%). They'll mention it if you don't. Nils: "I've seen this cause so much confusion."</p>
+    </div>
+    <div class="tip-box">
+      <h3>Ordering drinks</h3>
+      <p>A "michelada" in DF is beer with lime on ice with salted rim — order by beer name: "Bohemia michelada." A "limonada" is fresh limeade, say "mineral" or "natural" for bubbles. Margaritas are mostly for tourists. Mezcal is hip and drunk straight. Martinis increasingly popular at nicer spots.</p>
+    </div>
+    <div class="tip-box">
+      <h3>Basic greetings go a long way</h3>
+      <p>Buenos días (before noon), buenas tardes (noon-dark), buenas noches. Say hi entering and bye leaving — you're ahead of 90% of tourists. Very polite culture. You're "norteamericano," not "americano." The city is "el DF."</p>
+    </div>
+    <div class="tip-box">
+      <h3>Friday nights</h3>
+      <p>Patrick Miller — big beloved dance party. A DF institution.</p>
+    </div>
+  </div>
+
+</div>
+
+<script>
+function show(id, btn) {
+  document.querySelectorAll('.sec').forEach(s => s.classList.remove('on'));
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.getElementById(id).classList.add('on');
+  btn.classList.add('active');
+}
+</script>
+
+<!-- Floating map button -->
+<button class="map-fab" id="map-fab-btn">
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <polygon points="3 6 9 3 15 6 21 3 21 18 15 21 9 18 3 21"/>
+    <line x1="9" y1="3" x2="9" y2="18"/><line x1="15" y1="6" x2="15" y2="21"/>
+  </svg>
+  Map
+</button>
+
+<!-- Full-screen map overlay -->
+<div class="map-overlay" id="map-overlay">
+  <div class="map-topbar">
+    <h2>Mexico City — All Places</h2>
+    <div class="map-topbar-right">
+      <button class="map-close" onclick="closeMap()">Close</button>
+    </div>
+  </div>
+  <div class="map-filters" id="map-filters"></div>
+  <div id="map-container">
+    <div id="leaflet-map"></div>
+  </div>
+</div>
+
+<!-- Leaflet JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<script>
+var PLACES = [
+  { name: "Four Seasons CDMX", cat: "home", lat: 19.4232659, lng: -99.174371, desc: "Your hotel base on Paseo de la Reforma.", maps: "https://maps.google.com/?cid=6971479112545467983", star: true },
+  { name: "The Lift CDMX", cat: "home", lat: 19.4194493, lng: -99.173657, desc: "Production studio. Sinaloa 215, Roma Norte.", maps: "https://www.google.com/maps/search/The+Lift+CDMX+Sinaloa+215+Roma+Norte+Mexico+City", star: true },
+  { name: "El Vilsito", cat: "tacos", lat: 19.3893, lng: -99.1528, desc: "Best al pastor in DF. Auto shop by day, open 1pm-5am.", maps: "https://maps.google.com/?cid=16740546902627837206" },
+  { name: "Los Cocuyos", cat: "tacos", lat: 19.4303, lng: -99.1388, desc: "Suadero, campechano, trippa. Open 24 hrs.", maps: "https://maps.google.com/?cid=14051425661561475567" },
+  { name: "El Charquito", cat: "tacos", lat: 19.4160, lng: -99.1620, desc: "Campechano con queso. Great tortillas and condiments.", maps: "https://www.google.com/maps/search/El+Charquito+tacos+Puebla+Salamanca+Roma+Mexico+City" },
+  { name: "El Farolito", cat: "tacos", lat: 19.4130, lng: -99.1700, desc: "Pioneered tacos al carbon. Bistec and chicharron de queso.", maps: "https://www.google.com/maps/search/El+Farolito+tacos+Altata+Alfonso+Reyes+Condesa+Mexico+City" },
+  { name: "Califa", cat: "tacos", lat: 19.4128, lng: -99.1702, desc: "Ribeye and gaonera, con queso. Across from Farolito.", maps: "https://www.google.com/maps/search/Califa+tacos+Altata+Condesa+Mexico+City" },
+  { name: "Taqueria Orinoco", cat: "tacos", lat: 19.4150, lng: -99.1650, desc: "A must.", maps: "https://www.google.com/maps/search/Taqueria+Orinoco+Mexico+City" },
+  { name: "El Borrego Viudo", cat: "tacos", lat: 19.3980, lng: -99.1870, desc: "Open 24 hrs. Pastor plus salsa negra. They serve in cars.", maps: "https://www.google.com/maps/search/El+Borrego+Viudo+Revolucion+241+Tacubaya+Mexico+City" },
+  { name: "Los Panchos", cat: "tacos", lat: 19.4310, lng: -99.1790, desc: "Best carnitas. Get the surtida. Open 9am-10pm daily.", maps: "https://www.google.com/maps/search/Los+Panchos+carnitas+Tolstoi+9+Anzures+Mexico+City" },
+  { name: "El Huequito", cat: "tacos", lat: 19.4312, lng: -99.1437, desc: "Perfect al pastor since 1959. Near Mercado San Juan.", maps: "https://www.google.com/maps/search/El+Huequito+tacos+Ayuntamiento+21+Centro+Mexico+City" },
+  { name: "El Chupacabras", cat: "tacos", lat: 19.3530, lng: -99.1530, desc: "Chorizo, bistec, cecina mix. Great condiment bar.", maps: "https://www.google.com/maps/search/El+Chupacabras+tacos+Churubusco+Coyoacan+metro+Mexico+City" },
+  { name: "El Turix", cat: "tacos", lat: 19.4330, lng: -99.1940, desc: "Cochinita pibil only. Amazing panuchos, habanero salsa.", maps: "https://www.google.com/maps/search/El+Turix+cochinita+Emilio+Castelar+212+Polanco+Mexico+City" },
+  { name: "El Greco", cat: "tacos", lat: 19.4130, lng: -99.1740, desc: "Souvlaki-style rotisserie. Get the doneraki and flan.", maps: "https://www.google.com/maps/search/El+Greco+tacos+Michoacan+54+Hipodromo+Mexico+City" },
+  { name: "Tacos Beto", cat: "tacos", lat: 19.3950, lng: -99.1530, desc: "The cochinada taco - dregs of the frying pot. Greasy, incredible.", maps: "https://www.google.com/maps/search/Tacos+Beto+Vertiz+1023+Narvarte+Mexico+City" },
+  { name: "Contramar", cat: "seafood", lat: 19.4196, lng: -99.1672, desc: "Perfect restaurant. Tostadas de atun, Pescado Contramar.", maps: "https://maps.google.com/?cid=1047725080642144831" },
+  { name: "Romulo's", cat: "seafood", lat: 19.3980, lng: -99.1600, desc: "Aguachile, almejas vivas, pata de mula. Since 1972.", maps: "https://www.google.com/maps/search/Romulos+mariscos+Yacatas+Narvarte+Mexico+City" },
+  { name: "Mi Gusto Es", cat: "seafood", lat: 19.3970, lng: -99.1610, desc: "Sinaloan-style. Aguachile, tacos de marlin ahumado. Go before 12:30.", maps: "https://www.google.com/maps/search/Mi+Gusto+Es+mariscos+Diagonal+San+Antonio+1709+Narvarte+Mexico+City" },
+  { name: "Entremar", cat: "seafood", lat: 19.4340, lng: -99.1960, desc: "Sister to Contramar. Fallback if you can't get a reservation.", maps: "https://www.google.com/maps/search/Entremar+restaurant+Hegel+Horacio+Polanco+Mexico+City" },
+  { name: "Fugaz", cat: "seafood", lat: 19.4190, lng: -99.1660, desc: "Cevicheria from a Colombian chef. Get the tostada and crudo.", maps: "https://www.google.com/maps/search/Fugaz+cevicheria+Mexico+City" },
+  { name: "Mi Compa Chava", cat: "seafood", lat: 19.4100, lng: -99.1580, desc: "An absolute must - beloved seafood spot.", maps: "https://www.google.com/maps/search/Mi+Compa+Chava+mariscos+Mexico+City" },
+  { name: "Pujol", cat: "restaurants", lat: 19.4340, lng: -99.1940, desc: "Chef Enrique Olvera. One of the city's best.", maps: "https://www.google.com/maps/search/Pujol+restaurant+Petrarca+254+Polanco+Mexico+City" },
+  { name: "Quintonil", cat: "restaurants", lat: 19.4320, lng: -99.1950, desc: "Everything local. Salads and apps are the stars.", maps: "https://www.google.com/maps/search/Quintonil+restaurant+Newton+55+Polanco+Mexico+City" },
+  { name: "Rosetta", cat: "restaurants", lat: 19.4198, lng: -99.1598, desc: "Genuinely great. Stunning old mansion. Bakery from 9am.", maps: "https://maps.google.com/?cid=7025595317954862016" },
+  { name: "Maximo Bistrot", cat: "restaurants", lat: 19.4160, lng: -99.1620, desc: "Market-based daily menus. Very popular.", maps: "https://www.google.com/maps/search/Maximo+Bistrot+Tonala+133+Roma+Mexico+City" },
+  { name: "Nicos", cat: "restaurants", lat: 19.4700, lng: -99.1870, desc: "Heirloom ingredients, soulful home cooking. Lunch only.", maps: "https://www.google.com/maps/search/Nicos+restaurant+Cuitlahuac+3102+Azcapotzalco+Mexico+City" },
+  { name: "Coox Hanal", cat: "restaurants", lat: 19.4310, lng: -99.1360, desc: "Best Yucatan in DF. Lunch only. Sopa de lima.", maps: "https://www.google.com/maps/search/Coox+Hanal+Isabel+la+Catolica+83+Centro+Mexico+City" },
+  { name: "Merotoro", cat: "restaurants", lat: 19.4120, lng: -99.1720, desc: "Baja/Med. Risottos and seafood apps are phenomenal.", maps: "https://www.google.com/maps/search/Merotoro+restaurant+Amsterdam+204+Condesa+Mexico+City" },
+  { name: "Hugo", cat: "restaurants", lat: 19.4180, lng: -99.1640, desc: "Wine bar/bistro. Don't miss the tartare and radicchio.", maps: "https://www.google.com/maps/search/Hugo+restaurant+wine+bar+Mexico+City" },
+  { name: "Meroma", cat: "restaurants", lat: 19.4175, lng: -99.1655, desc: "Sit at the bar. Crudo, tartare, shrimp toast, martinis.", maps: "https://www.google.com/maps/search/Meroma+restaurant+Mexico+City" },
+  { name: "Paris 16", cat: "restaurants", lat: 19.4280, lng: -99.1700, desc: "Favorite bistro. Best milanesa in DF.", maps: "https://www.google.com/maps/search/Paris+16+bistro+Reforma+Mexico+City" },
+  { name: "Cicatriz", cat: "restaurants", lat: 19.4195, lng: -99.1610, desc: "All-day: sandwiches, cocktails, natural wine. Better for lunch.", maps: "https://www.google.com/maps/search/Cicatriz+cafe+Mexico+City" },
+  { name: "Masala y Maiz", cat: "restaurants", lat: 19.4180, lng: -99.1670, desc: "Indian-Mexican-Kenyan fusion. Celebrated.", maps: "https://www.google.com/maps/search/Masala+y+Maiz+Mexico+City" },
+  { name: "Fonda Margarita", cat: "restaurants", lat: 19.3890, lng: -99.1590, desc: "Open 5:30am! Chicharron in salsa verde, frijoles con huevos.", maps: "https://www.google.com/maps/search/Fonda+Margarita+Adolfo+Prieto+1364+Del+Valle+Mexico+City" },
+  { name: "La Tonina", cat: "restaurants", lat: 19.4170, lng: -99.1630, desc: "Amazing norteno. Best flour tortillas. The chilorio is a must.", maps: "https://www.google.com/maps/search/La+Tonina+restaurant+Mexico+City" },
+  { name: "El Cardenal", cat: "breakfast", lat: 19.4337, lng: -99.1353, desc: "Best breakfast in the city. Chocolate con leche, fresh conchas.", maps: "https://maps.google.com/?cid=13868502935468731733" },
+  { name: "Panaderia Rosetta", cat: "breakfast", lat: 19.4197, lng: -99.1600, desc: "All breads baked in-house. City institution for morning pastries.", maps: "https://www.google.com/maps/search/Panaderia+Rosetta+Roma+Mexico+City" },
+  { name: "El Moro", cat: "breakfast", lat: 19.4315, lng: -99.1398, desc: "Iconic churros and hot chocolate. Open 24 hours.", maps: "https://www.google.com/maps/search/El+Moro+churros+Eje+Central+Centro+Mexico+City" },
+  { name: "Chiquitito Cafe", cat: "breakfast", lat: 19.4127, lng: -99.1705, desc: "Maybe the best coffee bar in the city. World-class.", maps: "https://www.google.com/maps/search/Chiquitito+Cafe+Alfonso+Reyes+232+Condesa+Mexico+City" },
+  { name: "Klein's", cat: "breakfast", lat: 19.4340, lng: -99.1960, desc: "Mexican breakfast meets Jewish deli. Served till 1pm.", maps: "https://www.google.com/maps/search/Kleins+restaurant+Masaryk+360+Polanco+Mexico+City" },
+  { name: "Maque", cat: "breakfast", lat: 19.4115, lng: -99.1730, desc: "Great Mex breakfasts and pastries with Parque Mexico view.", maps: "https://www.google.com/maps/search/Maque+cafe+Parque+Mexico+Condesa+Mexico+City" },
+  { name: "El Bosforo", cat: "bars", lat: 19.4333, lng: -99.1451, desc: "Hidden Centro mezcal bar. Knock if door's closed. Tu-Sa from 6pm.", maps: "https://maps.google.com/?cid=12762817087927172120" },
+  { name: "La Clandestina", cat: "bars", lat: 19.4150, lng: -99.1680, desc: "20+ backyard mezcals. Bartenders will guide you.", maps: "https://www.google.com/maps/search/La+Clandestina+mezcal+Alvaro+Obregon+Roma+Mexico+City" },
+  { name: "Novo's", cat: "bars", lat: 19.3490, lng: -99.1630, desc: "All hard-to-find Mexican liquors: pulque, sotol, bacanora.", maps: "https://www.google.com/maps/search/Novos+bar+Madrid+13+Coyoacan+Mexico+City" },
+  { name: "Handshake Speakeasy", cat: "bars", lat: 19.4244, lng: -99.1649, desc: "One of the best cocktail bars in the world. Book ahead.", maps: "https://maps.google.com/?cid=14109173404258449887" },
+  { name: "686 Bar", cat: "bars", lat: 19.4200, lng: -99.1650, desc: "Go late, sit at the bar. Martinis or the carrot sour.", maps: "https://www.google.com/maps/search/686+Bar+Mexico+City" },
+  { name: "Bar Tamaulipas", cat: "bars", lat: 19.4125, lng: -99.1710, desc: "Cafe by day, cocktail bar W-Sa till 3:30am.", maps: "https://www.google.com/maps/search/Bar+Tamaulipas+147+Condesa+Mexico+City" },
+  { name: "Limantour", cat: "bars", lat: 19.4168, lng: -99.1635, desc: "Closest the city has to a real mixology bar. Open 4pm-2am.", maps: "https://www.google.com/maps/search/Limantour+bar+Alvaro+Obregon+106+Roma+Mexico+City" },
+  { name: "El Mirador", cat: "bars", lat: 19.4200, lng: -99.1820, desc: "Cantina since 1904. Tribilin and chamorro.", maps: "https://www.google.com/maps/search/El+Mirador+cantina+Chapultepec+606+San+Miguel+Mexico+City" },
+  { name: "Casa Luis Barragan", cat: "sights", lat: 19.4112, lng: -99.1924, desc: "One of the great architectural experiences in the world. Book ahead.", maps: "https://maps.google.com/?cid=6511729919028197971" },
+  { name: "Casa Gilardi", cat: "sights", lat: 19.4090, lng: -99.1910, desc: "Barragan's last project. Email to arrange a visit.", maps: "https://www.google.com/maps/search/Casa+Gilardi+Barragan+Mexico+City" },
+  { name: "Torres de Satelite", cat: "sights", lat: 19.5200, lng: -99.2340, desc: "Barragan's iconic sculpture towers. Worth the trip north.", maps: "https://www.google.com/maps/search/Torres+de+Satelite+Naucalpan+Mexico" },
+  { name: "Anthropology Museum", cat: "sights", lat: 19.4260, lng: -99.1863, desc: "One of the best archaeological museums anywhere. Do not miss.", maps: "https://maps.google.com/?cid=9521483601320789284" },
+  { name: "Frida Kahlo Museum", cat: "sights", lat: 19.3553, lng: -99.1627, desc: "La Casa Azul in Coyoacan.", maps: "https://www.google.com/maps/search/Frida+Kahlo+Museum+Casa+Azul+Coyoacan+Mexico+City" },
+  { name: "Museo Soumaya", cat: "sights", lat: 19.4394, lng: -99.2044, desc: "Free. Extraordinary collection, iconic building.", maps: "https://www.google.com/maps/search/Museo+Soumaya+Polanco+Mexico+City" },
+  { name: "Kurimanzutto", cat: "sights", lat: 19.4420, lng: -99.1950, desc: "Excellent contemporary art gallery.", maps: "https://www.google.com/maps/search/Kurimanzutto+gallery+Mexico+City" },
+  { name: "El Bazar Sabado", cat: "sights", lat: 19.3465, lng: -99.2010, desc: "Best handmade goods in San Angel. Saturdays only.", maps: "https://www.google.com/maps/search/El+Bazar+Sabado+Plaza+San+Jacinto+San+Angel+Mexico+City" },
+  { name: "Mercado San Juan", cat: "sights", lat: 19.4308, lng: -99.1435, desc: "Popular with chefs. Great for seafood and rare meats.", maps: "https://www.google.com/maps/search/Mercado+San+Juan+Ernesto+Pugibet+Centro+Mexico+City" },
+  { name: "Tianguis La Lagunilla", cat: "sights", lat: 19.4410, lng: -99.1330, desc: "Sundays - best and largest flea market.", maps: "https://www.google.com/maps/search/Tianguis+La+Lagunilla+Mexico+City" }
+];
+
+var CAT_CONFIG = {
+  tacos:       { label: "Tacos",       color: "#C0392B" },
+  seafood:     { label: "Seafood",     color: "#1A6EB5" },
+  restaurants: { label: "Restaurants", color: "#6B3FA0" },
+  breakfast:   { label: "Breakfast",   color: "#D4820A" },
+  bars:        { label: "Bars",        color: "#1D7A4A" },
+  sights:      { label: "Sights",      color: "#555555" },
+  home:        { label: "Your spots",  color: "#B8860B" }
+};
+
+var mapInitialized = false;
+var leafletMap = null;
+var allMarkers = [];
+var activeFilters = { tacos:true, seafood:true, restaurants:true, breakfast:true, bars:true, sights:true, home:true };
+
+function makeIcon(color, star) {
+  if (star) {
+    return L.divIcon({
+      className: "",
+      html: "<svg width=\"32\" height=\"38\" viewBox=\"0 0 32 38\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M16 0C7.163 0 0 7.163 0 16c0 10.667 16 22 16 22s16-11.333 16-22C32 7.163 24.837 0 16 0z\" fill=\"" + color + "\" stroke=\"white\" stroke-width=\"2\"/><text x=\"16\" y=\"21\" text-anchor=\"middle\" font-size=\"13\" fill=\"white\">&#9733;</text></svg>",
+      iconSize: [32, 38], iconAnchor: [16, 38], popupAnchor: [0, -40]
+    });
+  }
+  return L.divIcon({
+    className: "",
+    html: "<svg width=\"22\" height=\"28\" viewBox=\"0 0 22 28\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M11 0C4.925 0 0 4.925 0 11c0 7.333 11 17 11 17s11-9.667 11-17C22 4.925 17.075 0 11 0z\" fill=\"" + color + "\" stroke=\"white\" stroke-width=\"1.5\"/><circle cx=\"11\" cy=\"11\" r=\"4\" fill=\"white\" opacity=\"0.9\"/></svg>",
+    iconSize: [22, 28], iconAnchor: [11, 28], popupAnchor: [0, -30]
+  });
+}
+
+function initMap() {
+  leafletMap = L.map("leaflet-map").setView([19.415, -99.165], 13);
+  L.tileLayer("https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png", {
+    attribution: "&copy; OpenStreetMap &copy; CARTO",
+    subdomains: "abcd", maxZoom: 19
+  }).addTo(leafletMap);
+
+  for (var i = 0; i < PLACES.length; i++) {
+    (function(p) {
+      var cfg = CAT_CONFIG[p.cat];
+      var marker = L.marker([p.lat, p.lng], {
+        icon: makeIcon(cfg.color, p.star),
+        zIndexOffset: p.star ? 1000 : 0
+      });
+      marker.bindPopup(
+        "<div class=\"lf-popup-inner\">" +
+        "<div class=\"lf-popup-name\">" + p.name + "</div>" +
+        "<div class=\"lf-popup-cat\">" + cfg.label + "</div>" +
+        "<div class=\"lf-popup-desc\">" + p.desc + "</div>" +
+        "<a class=\"lf-popup-link\" href=\"" + p.maps + "\" target=\"_blank\" rel=\"noopener\">Open in Google Maps</a>" +
+        "</div>",
+        { className: "lf-popup", maxWidth: 240, closeButton: false }
+      );
+      marker.addTo(leafletMap);
+      marker._cat = p.cat;
+      marker._isHome = !!p.star;
+      allMarkers.push(marker);
+    })(PLACES[i]);
+  }
+
+  var filtersEl = document.getElementById("map-filters");
+  var cats = ["tacos","seafood","restaurants","breakfast","bars","sights"];
+  for (var j = 0; j < cats.length; j++) {
+    (function(key) {
+      var cfg = CAT_CONFIG[key];
+      var btn = document.createElement("button");
+      btn.className = "mf active";
+      btn.innerHTML = "<span class=\"dot\" style=\"background:" + cfg.color + "\"></span>" + cfg.label;
+      btn.onclick = function() { toggleFilter(key, btn); };
+      filtersEl.appendChild(btn);
+    })(cats[j]);
+  }
+}
+
+function toggleFilter(cat, btn) {
+  activeFilters[cat] = !activeFilters[cat];
+  btn.classList.toggle("active", activeFilters[cat]);
+  for (var i = 0; i < allMarkers.length; i++) {
+    var m = allMarkers[i];
+    if (m._isHome) continue;
+    if (activeFilters[m._cat]) {
+      if (!leafletMap.hasLayer(m)) m.addTo(leafletMap);
+    } else {
+      if (leafletMap.hasLayer(m)) leafletMap.removeLayer(m);
+    }
+  }
+}
+
+function openMap() {
+  document.getElementById("map-overlay").classList.add("open");
+  if (!mapInitialized) {
+    mapInitialized = true;
+    setTimeout(function() { initMap(); leafletMap.invalidateSize(); }, 80);
+  } else {
+    setTimeout(function() { leafletMap.invalidateSize(); }, 80);
+  }
+}
+
+function closeMap() {
+  document.getElementById("map-overlay").classList.remove("open");
+}
+
+document.addEventListener("keydown", function(e) { if (e.key === "Escape") closeMap(); });
+document.addEventListener("DOMContentLoaded", function() {
+  document.getElementById("map-fab-btn").addEventListener("click", openMap);
+});
+</script>
+</body>
+</html>
