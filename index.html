@@ -362,17 +362,17 @@
     position: fixed;
     inset: 0;
     z-index: 2000;
-    background: rgba(0,0,0,0.5);
-    backdrop-filter: blur(3px);
-    -webkit-backdrop-filter: blur(3px);
+    background: rgba(0,0,0,0);
     align-items: flex-end;
     justify-content: center;
     padding: 0;
+    transition: background 0.3s ease;
   }
   @media (min-width: 600px) {
     .lb-overlay { align-items: center; padding: 20px; }
   }
-  .lb-overlay.open { display: flex; }
+  .lb-overlay.open { display: flex; background: rgba(0,0,0,0.45); }
+  .lb-overlay.open.ready { backdrop-filter: blur(3px); -webkit-backdrop-filter: blur(3px); }
 
   .lb-panel {
     background: var(--bg);
@@ -380,8 +380,8 @@
     width: 100%;
     max-height: 90vh;
     overflow-y: auto;
-    box-shadow: 0 -8px 40px rgba(0,0,0,0.2);
-    animation: lb-up 0.22s cubic-bezier(0.32,0.72,0,1);
+    box-shadow: 0 -4px 32px rgba(0,0,0,0.12);
+    animation: lb-up 0.38s cubic-bezier(0.25,1,0.5,1) both;
     position: relative;
   }
   @media (min-width: 600px) {
@@ -389,17 +389,21 @@
       border-radius: 20px;
       max-width: 480px;
       max-height: 85vh;
-      animation: lb-in 0.18s cubic-bezier(0.32,0.72,0,1);
-      box-shadow: 0 24px 64px rgba(0,0,0,0.22);
+      animation: lb-in 0.3s cubic-bezier(0.25,1,0.5,1) both;
+      box-shadow: 0 24px 64px rgba(0,0,0,0.18);
     }
   }
   @keyframes lb-up {
-    from { opacity: 0; transform: translateY(40px); }
-    to   { opacity: 1; transform: none; }
+    from { opacity: 0; transform: translateY(28px); }
+    to   { opacity: 1; transform: translateY(0); }
   }
   @keyframes lb-in {
-    from { opacity: 0; transform: translateY(12px) scale(0.97); }
+    from { opacity: 0; transform: translateY(8px) scale(0.98); }
     to   { opacity: 1; transform: none; }
+  }
+  @keyframes lb-down {
+    from { opacity: 1; transform: translateY(0); }
+    to   { opacity: 0; transform: translateY(20px); }
   }
 
   /* Drag handle on mobile */
@@ -1453,6 +1457,7 @@ function openCard(card) {
   }
 
   document.getElementById('lb-overlay').classList.add('open');
+  setTimeout(function() { document.getElementById('lb-overlay').classList.add('ready'); }, 50);
   document.body.style.overflow = 'hidden';
 }
 
@@ -1478,8 +1483,17 @@ async function fetchInsiderTips(name, desc, el) {
 }
 
 function closeLightbox() {
-  document.getElementById('lb-overlay').classList.remove('open');
-  document.body.style.overflow = '';
+  var overlay = document.getElementById('lb-overlay');
+  var panel = document.getElementById('lb-panel');
+  overlay.classList.remove('ready');
+  panel.style.animation = 'lb-down 0.25s cubic-bezier(0.4,0,1,1) both';
+  overlay.style.background = 'rgba(0,0,0,0)';
+  setTimeout(function() {
+    overlay.classList.remove('open');
+    panel.style.animation = '';
+    overlay.style.background = '';
+    document.body.style.overflow = '';
+  }, 240);
 }
 
 function closeLB(e) {
