@@ -381,7 +381,7 @@
     max-height: 90vh;
     overflow-y: auto;
     box-shadow: 0 -4px 32px rgba(0,0,0,0.12);
-    animation: lb-up 0.38s cubic-bezier(0.25,1,0.5,1) both;
+    animation: lb-up 0.48s cubic-bezier(0.25,1,0.5,1) both;
     position: relative;
   }
   @media (min-width: 600px) {
@@ -389,7 +389,7 @@
       border-radius: 20px;
       max-width: 480px;
       max-height: 85vh;
-      animation: lb-in 0.3s cubic-bezier(0.25,1,0.5,1) both;
+      animation: lb-in 0.38s cubic-bezier(0.25,1,0.5,1) both;
       box-shadow: 0 24px 64px rgba(0,0,0,0.18);
     }
   }
@@ -1447,18 +1447,22 @@ function openCard(card) {
   }
   document.getElementById('lb-actions').innerHTML = actionsHTML;
 
-  // Insider tips — Claude API
+  // Insider tips — fetch first, then show lightbox
   var aiEl = document.getElementById('lb-ai-content');
-  if (lbCache[name]) {
-    aiEl.innerHTML = '<div class="lb-tips-text">' + lbCache[name] + '</div>';
-  } else {
-    aiEl.innerHTML = '<div class="lb-tips-loading"><div class="lb-dot"></div><div class="lb-dot"></div><div class="lb-dot"></div></div>';
-    fetchInsiderTips(name, desc, aiEl);
+  aiEl.innerHTML = '<div class="lb-tips-loading"><div class="lb-dot"></div><div class="lb-dot"></div><div class="lb-dot"></div></div>';
+
+  function showLightbox() {
+    document.getElementById('lb-overlay').classList.add('open');
+    setTimeout(function() { document.getElementById('lb-overlay').classList.add('ready'); }, 50);
+    document.body.style.overflow = 'hidden';
   }
 
-  document.getElementById('lb-overlay').classList.add('open');
-  setTimeout(function() { document.getElementById('lb-overlay').classList.add('ready'); }, 50);
-  document.body.style.overflow = 'hidden';
+  if (lbCache[name]) {
+    aiEl.innerHTML = '<div class="lb-tips-text">' + lbCache[name] + '</div>';
+    showLightbox();
+  } else {
+    fetchInsiderTips(name, desc, aiEl).then(showLightbox);
+  }
 }
 
 async function fetchInsiderTips(name, desc, el) {
@@ -1478,7 +1482,9 @@ async function fetchInsiderTips(name, desc, el) {
     lbCache[name] = text;
     el.innerHTML = '<div class="lb-tips-text">' + text + '</div>';
   } catch(e) {
-    el.innerHTML = '<div class="lb-tips-text">' + desc + '</div>';
+    var fallback = desc || 'No tips available.';
+    lbCache[name] = fallback;
+    el.innerHTML = '<div class="lb-tips-text">' + fallback + '</div>';
   }
 }
 
