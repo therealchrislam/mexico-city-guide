@@ -57,7 +57,7 @@
     }
   }
 
-  html { background: var(--bg-tertiary); }
+  html { background: var(--bg-tertiary); scrollbar-gutter: stable; }
 
   body {
     font-family: 'DM Sans', system-ui, sans-serif;
@@ -366,13 +366,13 @@
     align-items: flex-end;
     justify-content: center;
     padding: 0;
-    transition: background 0.3s ease;
+    transition: background 0.35s ease;
   }
   @media (min-width: 600px) {
     .lb-overlay { align-items: center; padding: 20px; }
   }
-  .lb-overlay.open { display: flex; background: rgba(0,0,0,0.45); }
-  .lb-overlay.open.ready { backdrop-filter: blur(3px); -webkit-backdrop-filter: blur(3px); }
+  .lb-overlay.open { display: flex; }
+  .lb-overlay.open.ready { background: rgba(0,0,0,0.45); backdrop-filter: blur(2px); -webkit-backdrop-filter: blur(2px); }
 
   .lb-panel {
     background: var(--bg);
@@ -381,25 +381,28 @@
     max-height: 90vh;
     overflow-y: auto;
     box-shadow: 0 -4px 32px rgba(0,0,0,0.12);
-    animation: lb-up 0.48s cubic-bezier(0.25,1,0.5,1) both;
     position: relative;
+    transform: translateY(100%);
+    transition: transform 0.4s cubic-bezier(0.22,1,0.36,1), opacity 0.3s ease;
+    opacity: 0;
+  }
+  .lb-overlay.open .lb-panel {
+    transform: translateY(0);
+    opacity: 1;
   }
   @media (min-width: 600px) {
     .lb-panel {
       border-radius: 20px;
       max-width: 480px;
       max-height: 85vh;
-      animation: lb-in 0.38s cubic-bezier(0.25,1,0.5,1) both;
       box-shadow: 0 24px 64px rgba(0,0,0,0.18);
+      transform: translateY(12px) scale(0.97);
+      transition: transform 0.35s cubic-bezier(0.22,1,0.36,1), opacity 0.25s ease;
     }
-  }
-  @keyframes lb-up {
-    from { opacity: 0; transform: translateY(28px); }
-    to   { opacity: 1; transform: translateY(0); }
-  }
-  @keyframes lb-in {
-    from { opacity: 0; transform: translateY(8px) scale(0.98); }
-    to   { opacity: 1; transform: none; }
+    .lb-overlay.open .lb-panel {
+      transform: translateY(0) scale(1);
+      opacity: 1;
+    }
   }
   @keyframes lb-down {
     from { opacity: 1; transform: translateY(0); }
@@ -423,15 +426,16 @@
 
   .lb-close {
     position: absolute;
-    top: 0; right: 16px;
-    width: 28px; height: 28px;
+    top: 16px; right: 16px;
+    width: 32px; height: 32px;
     background: var(--bg-secondary);
     border: none;
     border-radius: 50%;
     cursor: pointer;
     display: flex; align-items: center; justify-content: center;
     color: var(--text-tertiary);
-    transition: background 0.12s, color 0.12s;
+    transition: background 0.15s, color 0.15s;
+    flex-shrink: 0;
   }
   .lb-close:hover { background: var(--bg-tertiary); color: var(--text-primary); }
 
@@ -1452,9 +1456,9 @@ function openCard(card) {
   aiEl.innerHTML = '<div class="lb-tips-loading"><div class="lb-dot"></div><div class="lb-dot"></div><div class="lb-dot"></div></div>';
 
   function showLightbox() {
-    document.getElementById('lb-overlay').classList.add('open');
-    setTimeout(function() { document.getElementById('lb-overlay').classList.add('ready'); }, 50);
-    document.body.style.overflow = 'hidden';
+    var overlay = document.getElementById('lb-overlay');
+    overlay.classList.add('open');
+    setTimeout(function() { overlay.classList.add('ready'); }, 10);
   }
 
   if (lbCache[name]) {
@@ -1491,15 +1495,14 @@ async function fetchInsiderTips(name, desc, el) {
 function closeLightbox() {
   var overlay = document.getElementById('lb-overlay');
   var panel = document.getElementById('lb-panel');
-  overlay.classList.remove('ready');
-  panel.style.animation = 'lb-down 0.25s cubic-bezier(0.4,0,1,1) both';
+  overlay.classList.remove('ready', 'open');
   overlay.style.background = 'rgba(0,0,0,0)';
+  panel.style.transition = 'transform 0.28s cubic-bezier(0.4,0,1,1), opacity 0.22s ease';
   setTimeout(function() {
     overlay.classList.remove('open');
-    panel.style.animation = '';
+    panel.style.transition = '';
     overlay.style.background = '';
-    document.body.style.overflow = '';
-  }, 240);
+  }, 280);
 }
 
 function closeLB(e) {
@@ -1722,7 +1725,9 @@ document.addEventListener("DOMContentLoaded", function() {
     <div class="lb-handle"></div>
     <div class="lb-header">
       <button class="lb-close" onclick="closeLightbox()" aria-label="Close">
-        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <line x1="1" y1="1" x2="11" y2="11"/><line x1="11" y1="1" x2="1" y2="11"/>
+        </svg>
       </button>
       <div class="lb-name" id="lb-name"></div>
       <div class="lb-meta" id="lb-meta"></div>
