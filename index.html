@@ -835,6 +835,11 @@
         </div>
         <p class="cd">Amazing norteño restaurant. Best flour tortillas. The chilorio is a must.</p>
       </div>
+      <div class="card" data-rating="4.5" data-lat="19.3432" data-lng="-99.2156" onclick="openCard(this)" tabindex="0" role="button">
+        <div class="ct"><span class="cn">Tetetlán</span><div class="bx"><span class="b bi">worth the trip</span><span class="b bs">Kim's recco</span></div></div>
+        <p class="cd">Innovative Mexican cuisine in a beautiful stone-walled space in Jardines del Pedregal. Chef Martín Miranda traces ingredients from Texcoco to Xochimilco. Fireplace, private dining room, great cocktails.</p>
+        <p class="cn2"><a href="https://maps.google.com/?q=Av.+de+Las+Fuentes+180-B,+Jardines+del+Pedregal,+Álvaro+Obregón,+CDMX" target="_blank" rel="noopener">Av. de Las Fuentes 180-B, Jardines del Pedregal</a></p>
+      </div>
     </div>
     <p class="sl">Skip these (despite the hype)</p>
     <div class="cards">
@@ -1141,6 +1146,11 @@
         <p class="cd">Independent fashion brand worth seeking out in Roma-Condesa.</p>
         <p class="cn2"><a href="https://www.google.com/maps/search/Fabrica+Social+Mexico+City" target="_blank" rel="noopener">Mexico City</a></p>
       </div>
+      <div class="card" data-rating="5.0" data-lat="19.4148" data-lng="-99.1798" onclick="openCard(this)" tabindex="0" role="button">
+        <div class="ct"><span class="cn">Chava Studio</span><div class="bx"><span class="b bs">Kim's recco</span></div></div>
+        <p class="cd">Small-batch women's clothing made from archival European fabrics. Atelier-scale production out of a studio near Parque Lira. One of the best kept secrets in CDMX fashion.</p>
+        <p class="cn2"><a href="https://maps.google.com/?q=Gral.+Francisco+Ramírez+24,+Amp+Daniel+Garza,+Miguel+Hidalgo,+CDMX" target="_blank" rel="noopener">Gral. Francisco Ramírez 24, Amp. Daniel Garza</a></p>
+      </div>
       <div class="card" data-lat="19.418" data-lng="-99.161" onclick="openCard(this)" tabindex="0" role="button">
         <div class="ct"><span class="cn">Hi Bye</span></div>
         <p class="cd">Fashion boutique.</p>
@@ -1168,6 +1178,11 @@
         </div>
         <p class="cd">A gorgeous house filled with all sorts of ceramics. Worth a visit just to browse.</p>
         <p class="cn2"><a href="https://www.google.com/maps/search/Trinitate+ceramics+Mexico+City" target="_blank" rel="noopener">Mexico City</a></p>
+      </div>
+      <div class="card" data-lat="19.4186" data-lng="-99.1643" onclick="openCard(this)" tabindex="0" role="button">
+        <div class="ct"><span class="cn">Perla Valtierra</span><div class="bx"><span class="b bi">ceramics</span><span class="b bs">Kim's recco</span></div></div>
+        <p class="cd">Designer-ceramicist practicing traditional Mexican pottery. Handmade tableware and signature vases with deep roots in Bajío craft communities. Store at Parque España 17 — Tue–Sat 11–19h, Sun 11–18h.</p>
+        <p class="cn2"><a href="https://maps.google.com/?q=Av.+Parque+España+17,+Hipódromo+Condesa,+CDMX" target="_blank" rel="noopener">Av. Parque España 17, Hipódromo Condesa</a></p>
       </div>
       <div class="card" data-lat="19.4185" data-lng="-99.1605" onclick="openCard(this)" tabindex="0" role="button">
         <div class="ct"><span class="cn">Avec Joyería</span></div>
@@ -1499,6 +1514,7 @@ var PLACES = [
   { name: "Masala y Maiz", cat: "restaurants", lat: 19.4180, lng: -99.1670, desc: "Indian-Mexican-Kenyan fusion. Celebrated.", maps: "https://www.google.com/maps/search/Masala+y+Maiz+Mexico+City" },
   { name: "Fonda Margarita", cat: "restaurants", lat: 19.3890, lng: -99.1590, desc: "Open 5:30am! Chicharron in salsa verde, frijoles con huevos.", maps: "https://www.google.com/maps/search/Fonda+Margarita+Adolfo+Prieto+1364+Del+Valle+Mexico+City" },
   { name: "La Tonina", cat: "restaurants", lat: 19.4170, lng: -99.1630, desc: "Amazing norteno. Best flour tortillas. The chilorio is a must.", maps: "https://www.google.com/maps/search/La+Tonina+restaurant+Mexico+City" },
+  { name: "Tetetlán", cat: "restaurants", lat: 19.3432, lng: -99.2156, desc: "Innovative Mexican cuisine in a beautiful stone-walled space in Jardines del Pedregal.", maps: "https://maps.google.com/?q=Av.+de+Las+Fuentes+180-B,+Jardines+del+Pedregal,+Álvaro+Obregón,+CDMX" },
   { name: "El Cardenal", cat: "breakfast", lat: 19.4337, lng: -99.1353, desc: "Best breakfast in the city. Chocolate con leche, fresh conchas.", maps: "https://maps.google.com/?cid=13868502935468731733" },
   { name: "Panaderia Rosetta", cat: "breakfast", lat: 19.4197, lng: -99.1600, desc: "All breads baked in-house. City institution for morning pastries.", maps: "https://www.google.com/maps/search/Panaderia+Rosetta+Roma+Mexico+City" },
   { name: "El Moro", cat: "breakfast", lat: 19.4315, lng: -99.1398, desc: "Iconic churros and hot chocolate. Open 24 hours.", maps: "https://www.google.com/maps/search/El+Moro+churros+Eje+Central+Centro+Mexico+City" },
@@ -1522,7 +1538,9 @@ var PLACES = [
   { name: "Kurimanzutto", cat: "sights", lat: 19.4420, lng: -99.1950, desc: "Excellent contemporary art gallery.", maps: "https://www.google.com/maps/search/Kurimanzutto+gallery+Mexico+City" },
   { name: "El Bazar Sabado", cat: "sights", lat: 19.3465, lng: -99.2010, desc: "Best handmade goods in San Angel. Saturdays only.", maps: "https://www.google.com/maps/search/El+Bazar+Sabado+Plaza+San+Jacinto+San+Angel+Mexico+City" },
   { name: "Mercado San Juan", cat: "sights", lat: 19.4308, lng: -99.1435, desc: "Popular with chefs. Great for seafood and rare meats.", maps: "https://www.google.com/maps/search/Mercado+San+Juan+Ernesto+Pugibet+Centro+Mexico+City" },
-  { name: "Tianguis La Lagunilla", cat: "sights", lat: 19.4410, lng: -99.1330, desc: "Sundays - best and largest flea market.", maps: "https://www.google.com/maps/search/Tianguis+La+Lagunilla+Mexico+City" }
+  { name: "Tianguis La Lagunilla", cat: "sights", lat: 19.4410, lng: -99.1330, desc: "Sundays - best and largest flea market.", maps: "https://www.google.com/maps/search/Tianguis+La+Lagunilla+Mexico+City" },
+  { name: "Chava Studio", cat: "shop", lat: 19.4148, lng: -99.1798, desc: "Small-batch women's clothing from archival European fabrics. Atelier-scale production.", maps: "https://maps.google.com/?q=Gral.+Francisco+Ramírez+24,+Amp+Daniel+Garza,+Miguel+Hidalgo,+CDMX" },
+  { name: "Perla Valtierra", cat: "shop", lat: 19.4186, lng: -99.1643, desc: "Handmade ceramics and tableware with roots in traditional Mexican pottery.", maps: "https://maps.google.com/?q=Av.+Parque+España+17,+Hipódromo+Condesa,+CDMX" }
 ];
 
 var CAT_CONFIG = {
